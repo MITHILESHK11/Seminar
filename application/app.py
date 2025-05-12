@@ -1,5 +1,4 @@
 import streamlit as st
-import os
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -10,8 +9,6 @@ GEMINI_API_KEY = "AIzaSyB0kq7WBtDOYs6E8ZfIgZ-BxjnyNL-6v2U"  # Replace with your 
 
 def initialize_session_state():
     """Initialize session state variables if they don't exist."""
-    if "api_key" not in st.session_state:
-        st.session_state.api_key = GEMINI_API_KEY
     if "history" not in st.session_state:
         st.session_state.history = []
     if "last_summary" not in st.session_state:
@@ -139,33 +136,10 @@ st.set_page_config(
 # Initialize session state
 initialize_session_state()
 
-# Clean and minimal sidebar
-with st.sidebar:
-    st.title("AstraLearn")
-    st.markdown("Your AI-powered study companion.")
-    
-    api_key = st.text_input(
-        "Gemini API Key",
-        type="password",
-        value=st.session_state.api_key,
-        help="Enter your Gemini API key or use the default."
-    )
-    
-    if api_key:
-        st.session_state.api_key = api_key
-        if check_api_key(api_key):
-            st.success("API Key is valid!")
-        else:
-            st.error("Invalid API Key. Please check and try again.")
-    
-    st.markdown("---")
-    st.markdown("""
-    **About AstraLearn**  
-    - Summarize notes  
-    - Answer academic questions  
-    - Generate personalized study tips  
-    Powered by Google's Gemini API.
-    """)
+# Validate API key at startup
+if not check_api_key(GEMINI_API_KEY):
+    st.error("The provided Gemini API Key is invalid. Please update the GEMINI_API_KEY in the code.")
+    st.stop()
 
 # Main content
 st.title("AstraLearn")
@@ -197,27 +171,24 @@ with tab1:
         )
     
     if summarize_button and notes_text:
-        if not st.session_state.api_key:
-            st.error("Please enter a valid Gemini API Key in the sidebar.")
-        else:
-            with st.spinner("Generating summary..."):
-                try:
-                    summary = summarize_text(notes_text, summary_length, st.session_state.api_key)
-                    st.session_state.last_summary = summary
-                    st.success("Summary generated!")
-                    st.markdown("### Summary")
-                    st.markdown(summary)
-                    st.markdown("---")
-                    
-                    # Add to history
-                    history_item = {
-                        "type": "summary",
-                        "input": notes_text[:100] + "..." if len(notes_text) > 100 else notes_text,
-                        "output": summary[:100] + "..." if len(summary) > 100 else summary
-                    }
-                    st.session_state.history.insert(0, history_item)
-                except Exception as e:
-                    st.error(f"Error generating summary: {str(e)}")
+        with st.spinner("Generating summary..."):
+            try:
+                summary = summarize_text(notes_text, summary_length, GEMINI_API_KEY)
+                st.session_state.last_summary = summary
+                st.success("Summary generated!")
+                st.markdown("### Summary")
+                st.markdown(summary)
+                st.markdown("---")
+                
+                # Add to history
+                history_item = {
+                    "type": "summary",
+                    "input": notes_text[:100] + "..." if len(notes_text) > 100 else notes_text,
+                    "output": summary[:100] + "..." if len(summary) > 100 else summary
+                }
+                st.session_state.history.insert(0, history_item)
+            except Exception as e:
+                st.error(f"Error generating summary: {str(e)}")
 
 # Answer Questions tab
 with tab2:
@@ -243,13 +214,11 @@ with tab2:
     if st.button("Get Answer"):
         if not question:
             st.warning("Please enter a question.")
-        elif not st.session_state.api_key:
-            st.error("Please enter a valid Gemini API Key in the sidebar.")
         else:
             context = st.session_state.last_summary if use_summary_context else None
             with st.spinner("Generating answer..."):
                 try:
-                    answer = answer_question(question, subject_area, context, st.session_state.api_key)
+                    answer = answer_question(question, subject_area, context, GEMINI_API_KEY)
                     st.markdown("### Answer")
                     st.markdown(answer)
                     
@@ -296,12 +265,10 @@ with tab3:
     if st.button("Generate Study Tips"):
         if not subject:
             st.warning("Please enter a subject.")
-        elif not st.session_state.api_key:
-            st.error("Please enter a valid Gemini API Key in the sidebar.")
         else:
             with st.spinner("Generating study tips..."):
                 try:
-                    tips = generate_study_tips(subject, goal, learning_style, additional_info, st.session_state.api_key)
+                    tips = generate_study_tips(subject, goal, learning_style, additional_info, GEMINI_API_KEY)
                     st.markdown("### Your Study Tips")
                     st.markdown(tips)
                     
