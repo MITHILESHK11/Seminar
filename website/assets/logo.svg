@@ -1,0 +1,24 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Book shape -->
+  <rect x="40" y="50" width="120" height="100" rx="8" fill="#4A6BFF" />
+  
+  <!-- Pages -->
+  <rect x="45" y="55" width="110" height="90" rx="4" fill="#FFFFFF" />
+  
+  <!-- Brain icon -->
+  <path d="M100 75C91.5 75 84.5 81 84.5 88.5C84.5 91.5 85.5 94.5 87.5 96.5C85.5 98.5 84.5 101.5 84.5 104.5C84.5 112 91.5 118 100 118C108.5 118 115.5 112 115.5 104.5C115.5 101.5 114.5 98.5 112.5 96.5C114.5 94.5 115.5 91.5 115.5 88.5C115.5 81 108.5 75 100 75Z" fill="#4A6BFF" />
+  
+  <!-- Brain connections -->
+  <path d="M100 75V118" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" />
+  <path d="M92 80L108 113" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" />
+  <path d="M108 80L92 113" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" />
+  
+  <!-- Text lines -->
+  <rect x="55" y="125" width="90" height="3" rx="1.5" fill="#E5EAFF" />
+  <rect x="55" y="135" width="70" height="3" rx="1.5" fill="#E5EAFF" />
+  
+  <!-- Sparkle effects -->
+  <circle cx="140" cy="65" r="5" fill="#FFFFFF" opacity="0.6" />
+  <circle cx="130" cy="85" r="3" fill="#FFFFFF" opacity="0.4" />
+  <circle cx="70" cy="75" r="4" fill="#FFFFFF" opacity="0.5" />
+</svg>

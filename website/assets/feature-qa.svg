@@ -1,0 +1,33 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <circle cx="100" cy="100" r="80" fill="#E5EAFF" />
+  
+  <!-- Question mark -->
+  <path d="M80 85C80 75 90 65 100 65C110 65 120 75 120 85C120 95 110 100 105 105C100 110 100 115 100 120" stroke="#4A6BFF" stroke-width="8" stroke-linecap="round" />
+  <circle cx="100" cy="135" r="4" fill="#4A6BFF" />
+  
+  <!-- Chat bubbles -->
+  <rect x="40" y="80" width="60" height="30" rx="15" fill="white" stroke="#4A6BFF" stroke-width="3" />
+  <path d="M40 95L30 105L40 100" fill="white" stroke="#4A6BFF" stroke-width="3" stroke-linejoin="round" />
+  
+  <!-- Text in bubble -->
+  <rect x="50" y="90" width="30" height="3" rx="1.5" fill="#4A6BFF" />
+  <rect x="50" y="97" width="20" height="3" rx="1.5" fill="#4A6BFF" />
+  
+  <!-- Answer bubble -->
+  <rect x="100" y="120" width="70" height="40" rx="15" fill="white" stroke="#28C76F" stroke-width="3" />
+  <path d="M170 140L180 150L170 145" fill="white" stroke="#28C76F" stroke-width="3" stroke-linejoin="round" />
+  
+  <!-- Text in answer bubble -->
+  <rect x="110" y="130" width="40" height="3" rx="1.5" fill="#28C76F" />
+  <rect x="110" y="137" width="50" height="3" rx="1.5" fill="#28C76F" />
+  <rect x="110" y="144" width="30" height="3" rx="1.5" fill="#28C76F" />
+  
+  <!-- Light bulb -->
+  <circle cx="155" cy="70" r="15" fill="#FFFFFF" stroke="#FF6B6B" stroke-width="2" />
+  <path d="M155 60V65" stroke="#FF6B6B" stroke-width="2" stroke-linecap="round" />
+  <path d="M145 70H150" stroke="#FF6B6B" stroke-width="2" stroke-linecap="round" />
+  <path d="M160 70H165" stroke="#FF6B6B" stroke-width="2" stroke-linecap="round" />
+  <path d="M147 62L151 66" stroke="#FF6B6B" stroke-width="2" stroke-linecap="round" />
+  <path d="M159 62L155 66" stroke="#FF6B6B" stroke-width="2" stroke-linecap="round" />
+</svg>

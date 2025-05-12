@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <circle cx="150" cy="150" r="150" fill="#E5EAFF"/>
+  
+  <!-- Person silhouette -->
+  <circle cx="150" cy="100" r="50" fill="#4A6BFF" opacity="0.8"/>
+  <path d="M75 230C75 185.82 110.82 150 155 150H145C189.18 150 225 185.82 225 230V250H75V230Z" fill="#4A6BFF" opacity="0.8"/>
+  
+  <!-- Initials -->
+  <text x="150" y="115" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="white" text-anchor="middle">MK</text>
+</svg>
